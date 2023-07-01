@@ -43,5 +43,11 @@ Squat		3	100	5
 
 ---Adding Weight Tracking Feature---
 
-- Create a csv file
-- 	
+- Check .csv file exists 
+- Load or create the csv file as a dataframe. 
+- Add new entry into the dataframe 
+	- Date
+	- Weight
+- Perform data analysis, 
+	- Changes from previous entry
+	- Data visualisation? graph?
