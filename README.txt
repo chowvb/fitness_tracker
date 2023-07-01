@@ -32,3 +32,16 @@ Set 1: "{weight}kg for {reps} reps"
 Set 2: etc 
 Set 3: etc
 etc 
+
+01/07/2023 - Notes
+
+- Desired CSV Output 
+Exercise	Sets	Weight	Reps	
+Squat		1	100	3
+Squat		2	120	2
+Squat		3	100	5
+
+---Adding Weight Tracking Feature---
+
+- Create a csv file
+- 	
