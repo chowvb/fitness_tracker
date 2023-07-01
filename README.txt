@@ -48,6 +48,12 @@ Squat		3	100	5
 - Add new entry into the dataframe 
 	- Date
 	- Weight
-- Perform data analysis, 
+- Remove data entry function
+- View data frame
+- Perform data analysis, (Not Yet Implemented)
 	- Changes from previous entry
 	- Data visualisation? graph?
+
+To do:
+- Add function to open the dataframe in excel (source code can be found in the 4_pane_application for the calorie tracker)
+
