@@ -1,5 +1,7 @@
 import weight_tracker_functions as wtf
 import exercise_tracker_functions as etf
+import pandas as pd
+
 
 def main():
     """
