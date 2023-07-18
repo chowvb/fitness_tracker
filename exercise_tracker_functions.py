@@ -68,15 +68,28 @@ class FitnessTracker:
             print(exercise_df)
         
     def clear_exercises(self):
+        """
+        Clear the stored list of exercises that have been tracked so far. 
+        Collect the keys of the exercises dictionary and store them into a list. 
+        .clear() clears the dictionary completely
+        re-add the original keys back into the dictionary. 
+        """
         keys = list(self.exercises.keys())
         self.exercises.clear()
         self.exercises = {key: [] for key in keys}
         
     def export_to_csv(self):
+        """
+        Exports the saved exercises into a csv file.
+        """
+        # Create a dataframe containing the exercises performed from the exercises class
         exercise_df = pd.DataFrame(self.exercises)
         
-        csv_file = "data/exercise_tracker_glob.csv"
+        # Define the locaiton of the dataframe in a variable
+        csv_file = "fitness_tracker/data/exercise_tracker_glob.csv"
         
+        # Check if there is a .csv file already present in the data folder, if there is not one present, a new .csv file is automatically
+        # Created, if there is a .csv file present in the data folder, then open and read the file as a dictionary and convert to a pd dataframe
         if not os.path.exists(csv_file):
             with open(csv_file, "w", newline="") as file: 
                 writer = csv.writer(file)
@@ -84,18 +97,23 @@ class FitnessTracker:
                 print("CSV File Successfully Created")
                 etg_df = pd.read_csv(csv_file, delim_whitespace=True)
         else:
-            csv_file = "data/exercise_tracker_glob.csv"
+            csv_file = "fitness_tracker/data/exercise_tracker_glob.csv"
             etg = pd.read_csv(csv_file).dropna(how="any")
             etg_df = pd.DataFrame(etg)
-            
-        todays_date = datetime.date.today().strftime("%d/%m/%Y")
-        exercise_df["Date"] = todays_date
-        column_order = ["Date", "Name", "Set", "Reps", "Weight"]
-        output_df = exercise_df[column_order]
         
+        # Obtain todays date from the system this will be used to identify the dates that the exercises were added on. 
+        todays_date = datetime.date.today().strftime("%d/%m/%Y")
+
+        # Add the current date to all the new data entry points in the exercises_df dataframe
+        exercise_df["Date"] = todays_date
+
+        # Merge the dataframe containing the exercises to be added to the .csv file with the dataframe already 
+        # containing the stored data using pd.concat
         merge_df = [etg_df, exercise_df]
         csv_df = pd.concat(merge_df, ignore_index = True)
-        csv_df.to_csv("data/exercise_tracker_glob.csv", index = False)
+
+        # Save the new dataframe and overwrite the old file. (Does not remove old data)
+        csv_df.to_csv("fitness_tracker/data/exercise_tracker_glob.csv", index = False)
                 
 
 
